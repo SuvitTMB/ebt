@@ -24,6 +24,128 @@ body,h1,h2,h3,h4,h5 {font-family: "ekachon-regular", sans-serif}
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW7HPDW"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
+
+
+<script>
+  var aPicture = "";
+  var alineID = "";
+  var aLinename = "";
+  var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
+
+  var firebaseConfig = {
+    apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
+    authDomain: "retailproject-6f4fc.firebaseapp.com",
+    projectId: "retailproject-6f4fc",
+    storageBucket: "retailproject-6f4fc.appspot.com",
+    messagingSenderId: "653667385625",
+    appId: "1:653667385625:web:a5aed08500de80839f0588",
+    measurementId: "G-9SKTRHHSW9"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  var db = firebase.firestore().collection("logebt");
+
+  async function main() {
+    await liff.init({ liffId: "1655966947-KXWOAReV" })
+    document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+    if(liff.isLoggedIn()) {
+      getUserProfile()
+    } else {
+      liff.login()
+    }
+  }
+  main()
+
+  async function getUserProfile() {
+    var profile = await liff.getProfile();
+    document.getElementById("pictureUrl").src = profile.pictureUrl
+    document.getElementById("userId").append(profile.userId)
+    document.getElementById("displayName").append(profile.displayName)
+    aPicture = profile.pictureUrl;
+    alineID = profile.userId;
+    aLinename = profile.displayName;
+    //alert(aLinename);
+  }
+
+  function openWindow() {
+    liff.openWindow({
+      url: "https://line.me",
+      external: true     
+    })
+  }
+
+
+  function ClickNumber(x) {
+      dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
+      db.add({
+        LineID : alineID,
+        LineName : aLinename,
+        OpenNumber : x,
+        DateTimetoOpen : dateString,
+        LinePicture : aPicture   
+      });
+        //alert(x);
+      if(x==1) {
+        window.open('https://drive.google.com/file/d/163CDM4I2esTnhswP2AsJo1-UNc9zTtRC/view?usp=sharing');
+      } else if(x==2) {
+        window.open('https://drive.google.com/file/d/1EMPObj9HBG-SUicYnu0YgWJKul5BqU-P/view?usp=sharing');
+      } else if(x==3) {
+        window.open('https://drive.google.com/file/d/1S15WQxLwmd11jF95yDdcGMWY3h1qAWi1/view?usp=sharing');
+      } else if(x==4) {
+        window.open('https://drive.google.com/file/d/1zTzDWrAks4ivcHy5ViLIQVPO06SuHJlm/view?usp=sharing');
+      } else if(x==5) {
+        window.open('https://drive.google.com/file/d/1m_rZtUDAs_84k2BlWjRkc6mcKh3ikjgy/view?usp=sharing');
+      } else if(x==6) {
+        window.open('https://drive.google.com/file/d/1zsRKk40jHwOV8I-rBU58D40RL-LSBbQx/view?usp=sharing');
+      } else if(x==7) {
+        window.open('https://drive.google.com/file/d/1ZPBc3hG6Z9RffxAc9EG0X-LasDBoBPA-/view?usp=sharing');
+      } else if(x==8) {
+        window.open('https://drive.google.com/file/d/1YD_nk9oUKETFbFpYMwcTign1zBo5P65O/view?usp=sharing');
+      } else if(x==9) {
+        window.open('https://drive.google.com/file/d/1LnmNS8Ej1q2Ya7G4rpsFVxLlb50ijBOi/view?usp=sharing');
+      } else if(x==10) {
+        window.open('https://drive.google.com/file/d/1BqaFstpJ2AunioqrieuPNUiBAp-ymWys/view?usp=sharing');
+      } else if(x==11) {
+        window.open('https://drive.google.com/file/d/1wtAQ0sUyIBLDesPop3L0ZtMUlgYkYcxR/view?usp=sharing');
+      } else if(x==12) {
+        window.open('https://drive.google.com/file/d/1Qsyf1aACukwVhi3D59o6aEIb6iTMVKGt/view?usp=sharing');
+      } else if(x==13) {
+        window.open('https://drive.google.com/file/d/1jxY0aAqIVaaFGqvMyvXSApxelkbZ5f9R/view?usp=sharing');
+      }  
+  }
+
+
+
+
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
+
+var countDownDate = new Date("July 5, 2021 15:37:25").getTime();
+var x = setInterval(function() {
+  var now = new Date().getTime();
+  var distance = countDownDate - now;
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  document.getElementById("demo").innerHTML = "นับถอยหลังสู่ EBT Days<br>"+days + " วัน " + hours + " ชั่วโมง "
+  + minutes + " นาที " + seconds + " วินาที ";
+  if (distance < 0) {
+    clearInterval(x);
+    document.getElementById("demo").innerHTML = "EXPIRED";
+  }
+}, 1000);
+</script>
+
+
+
 <!-- w3-content defines a container for fixed size centered content, 
 and is wrapped around the whole page content, except for the footer in this example -->
 <div class="w3-content" style="max-width:1400px">
@@ -196,138 +318,6 @@ for (i = 0; i < acc.length; i++) {
 
 
 
-<script>
-  var aPicture = "";
-  var alineID = "";
-  var aLinename = "";
-  var dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
 
-  var firebaseConfig = {
-    apiKey: "AIzaSyDfTJJ425U4OY0xac6jdhtSxDeuJ-OF-lE",
-    authDomain: "retailproject-6f4fc.firebaseapp.com",
-    projectId: "retailproject-6f4fc",
-    storageBucket: "retailproject-6f4fc.appspot.com",
-    messagingSenderId: "653667385625",
-    appId: "1:653667385625:web:a5aed08500de80839f0588",
-    measurementId: "G-9SKTRHHSW9"
-  };
-
-  firebase.initializeApp(firebaseConfig);
-  var db = firebase.firestore().collection("logebt");
-
-  async function main() {
-    await liff.init({ liffId: "1655966947-KXWOAReV" })
-    document.getElementById("isLoggedIn").append(liff.isLoggedIn())
-    if(liff.isLoggedIn()) {
-      getUserProfile()
-    } else {
-      liff.login()
-    }
-  }
-  main()
-
-  async function getUserProfile() {
-    var profile = await liff.getProfile();
-    document.getElementById("pictureUrl").src = profile.pictureUrl
-    document.getElementById("userId").append(profile.userId)
-    document.getElementById("displayName").append(profile.displayName)
-    aPicture = profile.pictureUrl;
-    alineID = profile.userId;
-    aLinename = profile.displayName;
-    //alert(aLinename);
-  }
-
-  function openWindow() {
-    liff.openWindow({
-      url: "https://line.me",
-      external: true     
-    })
-  }
-
-
-  function ClickNumber(x) {
-      dateString = new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' });
-      db.add({
-        LineID : alineID,
-        LineName : aLinename,
-        OpenNumber : x,
-        DateTimetoOpen : dateString,
-        LinePicture : aPicture   
-      });
-        //alert(x);
-      if(x==1) {
-        window.open('https://drive.google.com/file/d/163CDM4I2esTnhswP2AsJo1-UNc9zTtRC/view?usp=sharing');
-      } else if(x==2) {
-        window.open('https://drive.google.com/file/d/1EMPObj9HBG-SUicYnu0YgWJKul5BqU-P/view?usp=sharing');
-      } else if(x==3) {
-        window.open('https://drive.google.com/file/d/1S15WQxLwmd11jF95yDdcGMWY3h1qAWi1/view?usp=sharing');
-      } else if(x==4) {
-        window.open('https://drive.google.com/file/d/1zTzDWrAks4ivcHy5ViLIQVPO06SuHJlm/view?usp=sharing');
-      } else if(x==5) {
-        window.open('https://drive.google.com/file/d/1m_rZtUDAs_84k2BlWjRkc6mcKh3ikjgy/view?usp=sharing');
-      } else if(x==6) {
-        window.open('https://drive.google.com/file/d/1zsRKk40jHwOV8I-rBU58D40RL-LSBbQx/view?usp=sharing');
-      } else if(x==7) {
-        window.open('https://drive.google.com/file/d/1ZPBc3hG6Z9RffxAc9EG0X-LasDBoBPA-/view?usp=sharing');
-      } else if(x==8) {
-        window.open('https://drive.google.com/file/d/1YD_nk9oUKETFbFpYMwcTign1zBo5P65O/view?usp=sharing');
-      } else if(x==9) {
-        window.open('https://drive.google.com/file/d/1LnmNS8Ej1q2Ya7G4rpsFVxLlb50ijBOi/view?usp=sharing');
-      } else if(x==10) {
-        window.open('https://drive.google.com/file/d/1BqaFstpJ2AunioqrieuPNUiBAp-ymWys/view?usp=sharing');
-      } else if(x==11) {
-        window.open('https://drive.google.com/file/d/1wtAQ0sUyIBLDesPop3L0ZtMUlgYkYcxR/view?usp=sharing');
-      } else if(x==12) {
-        window.open('https://drive.google.com/file/d/1Qsyf1aACukwVhi3D59o6aEIb6iTMVKGt/view?usp=sharing');
-      } else if(x==13) {
-        window.open('https://drive.google.com/file/d/1jxY0aAqIVaaFGqvMyvXSApxelkbZ5f9R/view?usp=sharing');
-      }  
-  }
-
-
-
-
-function myFunction(id) {
-  var x = document.getElementById(id);
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
-
-
-</script>
-
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("July 5, 2021 15:37:25").getTime();
-
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-    
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-    
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = "นับถอยหลังสู่ EBT Days<br>"+days + " วัน " + hours + " ชั่วโมง "
-  + minutes + " นาที " + seconds + " วินาที ";
-    
-  // If the count down is over, write some text 
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
-</script>
 </body>
 </html>
