@@ -33,6 +33,7 @@ body,h1,h2,h3,h4,h5 {font-family: "ekachon-regular", sans-serif}
 
 
 
+
 <!-- w3-content defines a container for fixed size centered content, 
 and is wrapped around the whole page content, except for the footer in this example -->
 <div class="w3-content" style="max-width:1400px">
@@ -118,6 +119,8 @@ and is wrapped around the whole page content, except for the footer in this exam
   firebase.initializeApp(firebaseConfig);
   var db = firebase.firestore().collection("logopenbook");
 
+/*
+*/
 
   async function main() {
     await liff.init({ liffId: "1655966947-KXWOAReV" })
@@ -139,7 +142,7 @@ and is wrapped around the whole page content, except for the footer in this exam
     aPicture = profile.pictureUrl;
     alineID = profile.userId;
     aLinename = profile.displayName;
-    alert(aLinename);
+    //alert(aLinename);
   }
 
   function openWindow() {
@@ -187,6 +190,17 @@ and is wrapped around the whole page content, except for the footer in this exam
         window.open('https://drive.google.com/file/d/1jxY0aAqIVaaFGqvMyvXSApxelkbZ5f9R/view?usp=sharing');
       }  
   }
+
+
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+
 
 var countDownDate = new Date("July 5, 2021 15:37:25").getTime();
 var x = setInterval(function() {
