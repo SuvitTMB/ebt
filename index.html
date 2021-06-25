@@ -381,8 +381,7 @@ for (i = 0; i < acc.length; i++) {
 	var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 	var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 	var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-	document.getElementById("demo").innerHTML = "นับถอยหลังสู่ EBT Days<br><font color='#ffff00'>"+days + " วัน " + hours + " ชั่วโมง "
-	+ minutes + " นาที " + seconds + " วินาที </font>";
+	document.getElementById("demo").innerHTML = "นับถอยหลังสู่ EBT Days<br><font color='#ffff00'>"+days + "</font> วัน <font color='#ffff00'>" + hours + "</font> ชั่วโมง <font color='#ffff00'>" + minutes + "</font> นาที <font color='#ffff00'>" + seconds + "</font> วินาที ";
 	if (distance < 0) {
 		clearInterval(x);
 		document.getElementById("demo").innerHTML = "EXPIRED";
